@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0a0f1c"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- 背景 -->
+  <rect width="192" height="192" rx="40" fill="url(#bg)"/>
+  <rect width="190" height="190" x="1" y="1" rx="39" fill="none" stroke="rgba(0,255,136,0.15)" stroke-width="1"/>
+  <!-- 装饰圆环（扑克筹码风格） -->
+  <circle cx="96" cy="84" r="50" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.25"/>
+  <circle cx="96" cy="84" r="42" fill="none" stroke="#ffd700" stroke-width="1" opacity="0.15" stroke-dasharray="6 4"/>
+  <!-- 四角花色装饰 -->
+  <text x="40" y="36" font-size="14" fill="#ff6b8a" opacity="0.4">♥</text>
+  <text x="148" y="36" font-size="14" fill="#a0c4ff" opacity="0.4">♠</text>
+  <text x="40" y="148" font-size="14" fill="#77dd77" opacity="0.4">♣</text>
+  <text x="148" y="148" font-size="14" fill="#ffb347" opacity="0.4">♦</text>
+  <!-- SK 主文字 -->
+  <text x="96" y="100" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="bold" fill="#00ff88" text-anchor="middle" filter="url(#glow)">SK</text>
+  <!-- ScoreKit 副标题 -->
+  <text x="96" y="156" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle" letter-spacing="3">SCOREKIT</text>
+</svg>

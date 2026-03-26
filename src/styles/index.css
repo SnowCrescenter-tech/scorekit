@@ -1,0 +1,303 @@
+@import "tailwindcss";
+
+/* =============================================
+   ScoreKit - 赌场霓虹主题设计系统
+   ============================================= */
+
+/* 自定义主题变量 */
+@theme {
+  --color-background: #0a0f1c;
+  --color-surface: #111827;
+  --color-surface-light: #1f2937;
+  --color-surface-lighter: #374151;
+  --color-foreground: #f1f5f9;
+  --color-foreground-muted: #94a3b8;
+  --color-foreground-dim: #64748b;
+
+  /* 主色 - 霓虹绿 */
+  --color-primary: #00ff88;
+  --color-primary-dim: #00cc6a;
+  --color-primary-glow: rgba(0, 255, 136, 0.3);
+
+  /* 强调色 - 金色 */
+  --color-accent: #ffd700;
+  --color-accent-dim: #b8960f;
+  --color-accent-glow: rgba(255, 215, 0, 0.3);
+
+  /* 危险色 - 霓虹红 */
+  --color-danger: #ff3366;
+  --color-danger-dim: #cc1a4a;
+  --color-danger-glow: rgba(255, 51, 102, 0.3);
+
+  /* 信息色 - 霓虹蓝 */
+  --color-info: #00d4ff;
+  --color-info-dim: #00a3c7;
+  --color-info-glow: rgba(0, 212, 255, 0.3);
+
+  /* 警告色 - 橙色 */
+  --color-warning: #ff8800;
+  --color-warning-glow: rgba(255, 136, 0, 0.3);
+
+  /* 花色颜色 */
+  --color-suit-spade: #a0c4ff;
+  --color-suit-heart: #ff6b8a;
+  --color-suit-diamond: #ffb347;
+  --color-suit-club: #77dd77;
+
+  /* 字体（含中文 fallback 链） */
+  --font-display: 'Orbitron', monospace;
+  --font-body: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+
+  /* 圆角 */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+}
+
+/* 基础样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  /* 防止双击缩放 */
+  touch-action: manipulation;
+}
+
+html {
+  font-size: 16px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 安全区域适配 */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-area-x {
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* pb-safe 工具类（用于底部面板） */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* 霓虹发光效果 */
+.neon-glow-green {
+  box-shadow: 0 0 10px var(--color-primary-glow),
+              0 0 30px var(--color-primary-glow),
+              inset 0 0 10px var(--color-primary-glow);
+}
+
+.neon-glow-gold {
+  box-shadow: 0 0 10px var(--color-accent-glow),
+              0 0 30px var(--color-accent-glow),
+              inset 0 0 10px var(--color-accent-glow);
+}
+
+.neon-glow-red {
+  box-shadow: 0 0 10px var(--color-danger-glow),
+              0 0 30px var(--color-danger-glow);
+}
+
+.neon-text-green {
+  text-shadow: 0 0 10px var(--color-primary-glow),
+               0 0 20px var(--color-primary-glow);
+}
+
+.neon-text-gold {
+  text-shadow: 0 0 10px var(--color-accent-glow),
+               0 0 20px var(--color-accent-glow);
+}
+
+/* 牌桌渐变背景 */
+.poker-table-bg {
+  background: radial-gradient(
+    ellipse at center,
+    #1a3a2a 0%,
+    #0f2a1e 40%,
+    #0a1f16 70%,
+    #0a0f1c 100%
+  );
+}
+
+/* 毛玻璃效果 */
+.glass {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-light {
+  background: rgba(31, 41, 55, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-lighter);
+  border-radius: var(--radius-full);
+}
+
+/* 数字显示字体 */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* 筹码动画 */
+@keyframes chip-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes chip-stack {
+  0% { transform: translateY(-40px); opacity: 0; }
+  60% { transform: translateY(4px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes number-roll {
+  0% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-chip-bounce {
+  animation: chip-bounce 0.6s ease-in-out;
+}
+
+.animate-chip-stack {
+  animation: chip-stack 0.3s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+/* 底部操作面板 */
+.bottom-sheet {
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+/* 触摸反馈 */
+.touch-feedback:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}
+
+/* 禁止文本选择(游戏界面) */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* ===== 响应式断点适配 ===== */
+
+/* 超小屏幕 (iPhone SE, 320px-374px) */
+@media (max-width: 374px) {
+  html { font-size: 13px; }
+  .font-display { letter-spacing: -0.02em; }
+}
+
+/* 小屏幕 (375px-413px, iPhone 12/13/14) */
+@media (min-width: 375px) and (max-width: 413px) {
+  html { font-size: 15px; }
+}
+
+/* 中等屏幕 (414px+, iPhone Plus/Pro Max) */
+@media (min-width: 414px) {
+  html { font-size: 16px; }
+}
+
+/* 大屏幕平板 */
+@media (min-width: 768px) {
+  html { font-size: 17px; }
+}
+
+/* 横屏处理 */
+@media (orientation: landscape) and (max-height: 500px) {
+  .safe-area-bottom { padding-bottom: 0 !important; }
+}
+
+/* 高分辨率屏幕 */
+@media (-webkit-min-device-pixel-ratio: 3) {
+  /* 确保细线在高像素密度下清晰 */
+  .glass { border-width: 0.5px; }
+}
+
+/* 刘海屏圆角安全区增强 */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .safe-area-x {
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+}
